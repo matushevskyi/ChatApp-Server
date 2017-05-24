@@ -1,0 +1,5 @@
+{ 
+    "mongodb_url": "mongodb://yarko:admin01@ds147421.mlab.com:47421/chatapp",
+    "redis_url": "//pub-redis-19086.eu-central-1-1.1.ec2.redislabs.com:19086",
+    "jwt_secret": "node.js-sever-api"
+}
