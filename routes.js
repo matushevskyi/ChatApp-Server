@@ -11,6 +11,7 @@ var User = require('./app/models/user');
 var Message = require('./app/models/msg');
 var Channel = require('./app/models/channel');
 
+
 // main route
 router.get('/', (req, res, next) => {
     fs.readFile(`${__dirname}/readme.md`, 'utf8', (err, data) => {
@@ -26,6 +27,7 @@ router.get('/users', (req, res) => {
     })
 })
 
+
 // registration
 router.post('/signup', (req, res) => {
     if (!req.body.username || !req.body.password) {
@@ -39,7 +41,6 @@ router.post('/signup', (req, res) => {
             password: req.body.password,
             email: req.body.email
         });
-
         // save the user
         newUser.save(err => {
             if (err) {
@@ -53,6 +54,7 @@ router.post('/signup', (req, res) => {
         })
     }
 })
+
 
 //login 
 router.post('/login', (req, res) => {
@@ -89,7 +91,9 @@ router.get('/messages', (req, res) => {
         }
         res.json(messages);
     })
+
 })
+
 
 // channels
 router.get('/channels', (req, res) => {
@@ -100,6 +104,7 @@ router.get('/channels', (req, res) => {
         }
         res.json(channels);
     })
+
 })
 
 module.exports = router

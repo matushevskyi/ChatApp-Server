@@ -7,7 +7,7 @@ module.exports = mongoose.model('User', new Schema({
         unique: true,
         required: true
     },
-    password: {
+  password: {
         type: String,
         required: true
     },

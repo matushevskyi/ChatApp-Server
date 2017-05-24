@@ -17,6 +17,7 @@ var User = require('./app/models/user');
 var Message = require('./app/models/msg');
 var Channel = require('./app/models/channel');
 
+
 app.use(express.static('public')); //Для обробки статичних файлів, таких як зображення, CSS файли, та JavaScript файли
 app.use(cors()); // Enable All CORS Requests
 
@@ -43,6 +44,7 @@ io.sockets
       .on('message', MessageHandler)
       .on('disconnect', disconnectHandler);
 
+
     function unauthorizedHandler(error) {
       if (error.data.type == 'UnauthorizedError' || error.data.code == 'invalid_token') {
         console.log("User's token has expired");
@@ -57,11 +59,13 @@ io.sockets
         user: socket.decoded_token,
         time: Date.now()
       })
+
       
        msgObj.save( err =>{
         if (err) console.log(err)
         io.emit('message', msgObj);
        })
+
     }
 
 //leave chat
@@ -71,11 +75,25 @@ io.sockets
         time: Date.now()
       })
     }
+
+
  });
+
+
+
+
+
+
+
+
 
 const server_port = process.env.PORT || 8000;
 const server_ip_address = process.env.IP || 'localhost';
 
+
+
+
+
 const server = http.listen(server_port, server_ip_address, () => {
-console.log(`Auth servise running on http://${server_ip_address}:${server_port}`)
+  console.log(`Auth servise running on http://${server_ip_address}:${server_port}`)
 })
